@@ -3,8 +3,8 @@ name: Inventory availability JMS smoke
 team: inventory-team
 microservice: inventory-events
 service_type: jms
-tags: [gate1, smoke, critical, inventory-events, jms, develop, test, release]
-branches: [develop, test, release]
+tags: [gate1, smoke, critical, inventory-events, jms, main, develop, test, release]
+branches: [main, develop, test, release]
 severity: critical
 jms:
   provider: file

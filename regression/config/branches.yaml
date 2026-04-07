@@ -1,5 +1,12 @@
 default_branch: develop
 policies:
+  main:
+    environment: DEV
+    gates: [gate1]
+    include_tags: [main]
+    disabled_gates: [gate2]
+    commands:
+      build: []
   develop:
     environment: DEV
     gates: [gate1]

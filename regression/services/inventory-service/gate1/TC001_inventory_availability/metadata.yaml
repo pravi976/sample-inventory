@@ -3,8 +3,8 @@ name: Inventory availability REST smoke
 team: inventory-team
 microservice: inventory-service
 service_type: rest
-tags: [gate1, smoke, critical, inventory-service, rest, develop, test, release]
-branches: [develop, test, release]
+tags: [gate1, smoke, critical, inventory-service, rest, main, develop, test, release]
+branches: [main, develop, test, release]
 severity: critical
 rest:
   method: GET
