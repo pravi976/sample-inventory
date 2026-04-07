@@ -1,0 +1,6 @@
+{
+  "eventId": "INV-EVT-001",
+  "eventType": "INVENTORY_AVAILABILITY_CHANGED",
+  "sku": "SKU-LAPTOP-999",
+  "warehouse": "MEM-01"
+}

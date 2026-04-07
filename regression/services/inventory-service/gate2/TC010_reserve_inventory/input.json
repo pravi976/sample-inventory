@@ -1,0 +1,10 @@
+{
+  "orderNumber": "ORD-2026-00042",
+  "line": {
+    "sku": "SKU-LAPTOP-999",
+    "quantity": 1
+  },
+  "routingPreference": {
+    "primaryWarehouse": "MEM-01"
+  }
+}

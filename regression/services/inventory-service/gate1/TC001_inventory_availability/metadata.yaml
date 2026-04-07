@@ -1,0 +1,21 @@
+id: INVENTORY_REST_TC001_AVAILABILITY
+name: Inventory availability REST smoke
+team: inventory-team
+microservice: inventory-service
+service_type: rest
+tags: [gate1, smoke, critical, inventory-service, rest, develop, test, release]
+branches: [develop, test, release]
+severity: critical
+rest:
+  method: GET
+  base_url: http://localhost:8082
+  endpoint: /api/inventory/sku/{sku}/availability
+  path_params:
+    sku: SKU-LAPTOP-999
+  query_params:
+    warehouse: MEM-01
+    includeAlternates: true
+    customerTier: GOLD
+  expected_status: 200
+  timeout_seconds: 5
+  response_fixture: actual_response.json

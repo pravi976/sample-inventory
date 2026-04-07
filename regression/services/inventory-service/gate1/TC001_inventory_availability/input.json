@@ -1,0 +1,6 @@
+{
+  "sku": "SKU-LAPTOP-999",
+  "warehouse": "MEM-01",
+  "includeAlternates": true,
+  "customerTier": "GOLD"
+}

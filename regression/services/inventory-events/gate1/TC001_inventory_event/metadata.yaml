@@ -1,0 +1,15 @@
+id: INVENTORY_JMS_TC001_EVENT
+name: Inventory availability JMS smoke
+team: inventory-team
+microservice: inventory-events
+service_type: jms
+tags: [gate1, smoke, critical, inventory-events, jms, develop, test, release]
+branches: [develop, test, release]
+severity: critical
+jms:
+  provider: file
+  request_queue: INVENTORY.EVENT.REQUEST
+  response_queue: INVENTORY.EVENT.RESPONSE
+  correlation_id_strategy: uuid
+  timeout_seconds: 5
+  retry_count: 1

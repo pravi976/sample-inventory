@@ -1,0 +1,17 @@
+id: INVENTORY_REST_TC010_RESERVE
+name: Reserve inventory REST full regression
+team: inventory-team
+microservice: inventory-service
+service_type: rest
+tags: [gate2, full, inventory-service, rest, test, release]
+branches: [test, release]
+severity: high
+rest:
+  method: POST
+  base_url: http://localhost:8082
+  endpoint: /api/inventory/reservations
+  headers:
+    Content-Type: application/json
+  expected_status: 201
+  timeout_seconds: 5
+  response_fixture: actual_response.json

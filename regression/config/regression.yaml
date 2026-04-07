@@ -1,0 +1,29 @@
+repository: sample-inventory
+owner: platform-samples
+default_branch: develop
+services_root: regression/services
+build_tool: gradle
+commands:
+  build:
+    - '.\gradlew.bat test'
+gates:
+  gate1: [gate1, critical]
+  gate2: [gate2, full]
+gate_policies:
+  gate1:
+    enabled: true
+    reason: Inventory fast regression gate is active
+  gate2:
+    enabled: true
+    reason: Inventory full regression gate is active
+service_owners:
+  inventory-service: inventory-team
+  inventory-events: inventory-team
+impact_map:
+  src/main/java/com/fedex/sample/inventory/api/**:
+    - inventory-service
+  src/main/java/com/fedex/sample/inventory/domain/**:
+    - inventory-service
+  src/main/resources/**:
+    - inventory-service
+    - inventory-events

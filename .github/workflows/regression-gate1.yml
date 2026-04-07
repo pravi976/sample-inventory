@@ -1,0 +1,39 @@
+name: Inventory Gate 1 Regression
+
+on:
+  pull_request:
+    branches: [develop, test, release, main]
+  push:
+    branches: [develop, test, release, main]
+  workflow_dispatch:
+
+jobs:
+  gate1:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Install enterprise regression platform
+        run: python -m pip install git+https://github.com/pravi976/enterprise-regression-platform.git
+      - name: Run inventory Gate 1
+        shell: pwsh
+        run: |
+          regauto build-run `
+            --repo-root . `
+            --branch "${{ github.head_ref || github.ref_name }}" `
+            --gate gate1 `
+            --results-dir regression-results/gate1 `
+            --trigger pr `
+            --commit-sha "${{ github.sha }}"
+      - name: Upload Gate 1 results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: inventory-gate1-regression-results
+          path: regression-results/gate1

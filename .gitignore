@@ -1,0 +1,7 @@
+.gradle/
+build/
+bin/
+regression-results/
+results/
+.jms/
+*.log

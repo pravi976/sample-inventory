@@ -1,0 +1,13 @@
+{
+  "status_code": 200,
+  "body": {
+    "sku": "SKU-LAPTOP-999",
+    "warehouse": "MEM-01",
+    "available": true,
+    "routing": {
+      "primaryWarehouse": "MEM-01",
+      "alternateWarehouse": "MEM-02",
+      "shippingMethod": "FEDEX_2DAY"
+    }
+  }
+}

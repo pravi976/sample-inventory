@@ -1,0 +1,26 @@
+default_branch: develop
+policies:
+  develop:
+    environment: DEV
+    gates: [gate1]
+    include_tags: [develop]
+    disabled_gates: [gate2]
+    commands:
+      build:
+        - '.\gradlew.bat test'
+  test:
+    environment: QA
+    gates: [gate1, gate2]
+    include_tags: [test]
+    disabled_gates: []
+    commands:
+      build:
+        - '.\gradlew.bat test'
+  release:
+    environment: PREPROD
+    gates: [gate1, gate2]
+    include_tags: [release]
+    disabled_gates: []
+    commands:
+      build:
+        - '.\gradlew.bat test'
