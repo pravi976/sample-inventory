@@ -3,11 +3,36 @@
   "body": {
     "sku": "SKU-LAPTOP-999",
     "warehouse": "MEM-01",
-    "available": true,
+    "reservable": true,
+    "correlationId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+    "quantity": {
+      "onHand": 25,
+      "available": 18,
+      "reserved": 7,
+      "backorderThreshold": 3
+    },
     "routing": {
       "primaryWarehouse": "MEM-01",
-      "alternateWarehouse": "MEM-02",
-      "shippingMethod": "FEDEX_2DAY"
-    }
+      "backupWarehouse": "MEM-02",
+      "shippingService": "FEDEX_2DAY",
+      "routingTags": {
+        "key": "root.routing.routingTags-value",
+        "sort": "PRIORITY",
+        "temperature": "AMBIENT",
+        "zone": "SOUTH"
+      }
+    },
+    "replacementValue": {
+      "amount": 1299.95,
+      "currency": "USD"
+    },
+    "regionalStock": {
+      "key": "root.regionalStock-value",
+      "ATL-03": "11",
+      "MEM-01": "18",
+      "MEM-02": "4"
+    },
+    "internalRiskToken": "provider-risk-token",
+    "calculatedAt": "2026-04-07T10:30:00Z"
   }
 }

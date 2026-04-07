@@ -22,6 +22,22 @@ jobs:
         with:
           distribution: temurin
           java-version: "17"
+      - name: Build and start inventory service
+        shell: pwsh
+        run: |
+          .\gradlew.bat bootJar -x test
+          $jar = Get-ChildItem build\libs\*.jar | Where-Object { $_.Name -notlike '*plain*' } | Select-Object -First 1
+          $process = Start-Process java -ArgumentList "-jar `"$($jar.FullName)`"" -PassThru
+          "APP_PID=$($process.Id)" | Out-File -FilePath $env:GITHUB_ENV -Append
+          for ($i = 0; $i -lt 30; $i++) {
+            try {
+              Invoke-WebRequest "http://localhost:8082/api/inventory/sku/SKU-LAPTOP-999/availability?warehouse=MEM-01&includeAlternates=true&customerTier=GOLD" -UseBasicParsing | Out-Null
+              exit 0
+            } catch {
+              Start-Sleep -Seconds 2
+            }
+          }
+          throw "Inventory service did not become ready"
       - name: Install enterprise regression platform
         run: python -m pip install git+https://github.com/pravi976/enterprise-regression-platform.git
       - name: Run inventory Gate 2
@@ -37,3 +53,8 @@ jobs:
         with:
           name: inventory-gate2-${{ matrix.branch }}-regression-results
           path: regression-results/gate2-${{ matrix.branch }}
+      - name: Stop inventory service
+        if: always()
+        shell: pwsh
+        run: |
+          if ($env:APP_PID) { Stop-Process -Id $env:APP_PID -Force -ErrorAction SilentlyContinue }

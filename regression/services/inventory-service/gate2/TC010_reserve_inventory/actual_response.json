@@ -1,9 +1,0 @@
-{
-  "status_code": 201,
-  "body": {
-    "reservationId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
-    "orderNumber": "ORD-2026-00042",
-    "status": "CONFIRMED",
-    "warehouse": "MEM-01"
-  }
-}

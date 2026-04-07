@@ -4,6 +4,19 @@
     "reservationId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
     "orderNumber": "ORD-2026-00042",
     "status": "CONFIRMED",
-    "warehouse": "MEM-01"
+    "allocatedWarehouse": "MEM-01",
+    "expiresIn": "PT30M",
+    "allocatedLine": {
+      "sku": "SKU-LAPTOP-999",
+      "quantity": 1,
+      "inventoryClass": null,
+      "declaredValue": null
+    },
+    "audit": {
+      "decision": "AUTO_APPROVED",
+      "key": "root.audit-value",
+      "source": "H2_TEST"
+    },
+    "reservationRiskToken": "reservation-risk-token"
   }
 }

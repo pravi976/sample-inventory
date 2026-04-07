@@ -6,6 +6,8 @@ service_type: rest
 tags: [gate1, smoke, critical, inventory-service, rest, main, develop, test, release]
 branches: [main, develop, test, release]
 severity: critical
+ignore_json_paths:
+  - $.headers
 rest:
   method: GET
   base_url: http://localhost:8082
@@ -18,4 +20,3 @@ rest:
     customerTier: GOLD
   expected_status: 200
   timeout_seconds: 5
-  response_fixture: actual_response.json
