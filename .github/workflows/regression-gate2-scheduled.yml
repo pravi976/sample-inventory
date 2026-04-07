@@ -15,11 +15,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ matrix.branch }}
-      - name: Checkout included Gradle build
-        uses: actions/checkout@v4
-        with:
-          repository: pravi976/consumer-driven-contract-testing
-          path: consumer-driven-contract-testing
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -31,10 +26,9 @@ jobs:
         run: python -m pip install git+https://github.com/pravi976/enterprise-regression-platform.git
       - name: Run inventory Gate 2
         run: |
-          regauto build-run `
+          regauto run-gate2 `
             --repo-root . `
             --branch "${{ matrix.branch }}" `
-            --gate gate2 `
             --results-dir regression-results/gate2-${{ matrix.branch }} `
             --trigger schedule
       - name: Upload Gate 2 results

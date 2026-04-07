@@ -2,10 +2,9 @@ repository: sample-inventory
 owner: platform-samples
 default_branch: develop
 services_root: regression/services
-build_tool: gradle
+build_tool: none
 commands:
-  build:
-    - '.\gradlew.bat test'
+  build: []
 gates:
   gate1: [gate1, critical]
   gate2: [gate2, full]

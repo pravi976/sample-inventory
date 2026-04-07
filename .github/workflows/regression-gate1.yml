@@ -12,11 +12,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Checkout included Gradle build
-        uses: actions/checkout@v4
-        with:
-          repository: pravi976/consumer-driven-contract-testing
-          path: consumer-driven-contract-testing
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -29,10 +24,9 @@ jobs:
       - name: Run inventory Gate 1
         shell: pwsh
         run: |
-          regauto build-run `
+          regauto run-gate1 `
             --repo-root . `
             --branch "${{ github.head_ref || github.ref_name }}" `
-            --gate gate1 `
             --results-dir regression-results/gate1 `
             --trigger pr `
             --commit-sha "${{ github.sha }}"
