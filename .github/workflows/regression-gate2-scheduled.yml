@@ -15,6 +15,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ matrix.branch }}
+      - name: Checkout included Gradle build
+        uses: actions/checkout@v4
+        with:
+          repository: pravi976/consumer-driven-contract-testing
+          path: consumer-driven-contract-testing
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
